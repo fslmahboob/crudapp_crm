@@ -1,6 +1,5 @@
 package com.fdm.soloproject2.model;
 
-import java.time.LocalDate;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -42,7 +41,7 @@ public class PotCandidates
 	private String City;
 	
 	@Column(name = "trainingenddate", nullable = false)
-	private LocalDate trainingenddate;
+	private String trainingenddate;
 
 	// No args constructor
 	public PotCandidates()
@@ -131,19 +130,19 @@ public class PotCandidates
 		City = city;
 	}
 
-	public LocalDate getTrainingenddate()
+	public String getTrainingenddate()
 	{
 		return trainingenddate;
 	}
 
-	public void setTrainingenddate(LocalDate trainingenddate)
+	public void setTrainingenddate(String trainingenddate)
 	{
 		this.trainingenddate = trainingenddate;
 	}
 	
 	// Args constructor
 	public PotCandidates(Jobs job, String first_name, String last_name, String email, String mobile, String country,
-	        String city, LocalDate trainingenddate)
+	        String city, String trainingenddate)
 	{
 		super();
 		this.job = job;
