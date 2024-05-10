@@ -5,6 +5,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 
 export default function PotCandidates() {
   const [job_id, setJob_id] = useState('');
@@ -17,14 +18,16 @@ export default function PotCandidates() {
   const [trainingenddate, settrainingenddate] = useState('');
 
   const [message, setMessage] = useState('');
+  const { candidate_id } = useParams();
 
   const navigate = useNavigate()
 
   const handleClick = (e) => {
     e.preventDefault();
     
-    const endpoint = "http://localhost:8080/potcandidates/${id}"
+    const endpoint = `http://localhost:8080/potcandidates/${candidate_id}`
     const requestBody = {
+            candidate_id:candidate_id,
             job_id:job_id,
             first_name:first_name,
             last_name:last_name,
@@ -37,7 +40,7 @@ export default function PotCandidates() {
     // console.log(PotCandidate);
     axios.put(endpoint, requestBody)
     .then(response=>{
-      setMessage((prevMessage) => (prevMessage === "" ? "Potential Candidate Added Updated" : prevMessage)); // Update based on previous state
+      setMessage((prevMessage) => (prevMessage === "" ? "Potential Candidate Updated" : prevMessage)); // Update based on previous state
       navigate("/potcandidates");
     })
     .catch(error => console.log(error));
@@ -57,6 +60,13 @@ export default function PotCandidates() {
       autoComplete="off"
     >
       <h1> Update Potential Candidate </h1>
+      <TextField
+        id="candidate_id"
+        label="PotCand_id"
+        variant="filled"
+        value={candidate_id}
+        onChange={(e) => setJob_id(e.target.value)}
+      />
       <TextField
         id="job_id"
         label="PotCand_job_id"

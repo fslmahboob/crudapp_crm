@@ -20,7 +20,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/potcandidates" element={<PotCandidates />} />
           <Route path="/potcandidatestable" element={<PotCandidatesTable />} />
-          <Route path="/updatepotcandidates" element={<UpdatePotCandidates />} />
+          <Route path="/updatepotcandidates/:candidate_id" element={<UpdatePotCandidates />} />
         </Routes>
       </div>
     </>

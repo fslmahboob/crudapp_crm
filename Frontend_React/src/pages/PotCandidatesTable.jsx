@@ -65,7 +65,7 @@ const TablePage = () => {
                                 <TableCell align="right">{row.trainingenddate}</TableCell>
                                 <TableCell align="right">
                                     <Link className='btn-update'
-                                    to={`/updatepotcandidates`}
+                                    to={`/updatepotcandidates/${row.candidate_id}`}
                                     >Update</Link>
                                 </TableCell>
                             </TableRow>

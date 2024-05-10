@@ -25,7 +25,7 @@ export default function PotCandidates() {
     
     const endpoint = "http://localhost:8080/potcandidates/register"
     const requestBody = {
-            candidate_id:candidate_id,
+            // candidate_id:candidate_id,
             job_id:job_id,
             first_name:first_name,
             last_name:last_name,
