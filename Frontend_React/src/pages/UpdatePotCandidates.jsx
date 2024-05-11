@@ -7,10 +7,10 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { useParams } from 'react-router-dom';
 
-export default function PotCandidates() {
-  const [job_id, setJob_id] = useState('');
-  const [first_name, setFirst_name] = useState('');
-  const [last_name, setLast_name] = useState('');
+export default function PotCandidates(props) {
+  const [jobid, setJobid] = useState('');
+  const [firstname, setFirstname] = useState('');
+  const [lastname, setLastname] = useState('');
   const [mobile, setMobile] = useState('');
   const [email, setEmail] = useState('');
   const [city, setCity] = useState('');
@@ -20,25 +20,35 @@ export default function PotCandidates() {
   const [message, setMessage] = useState('');
   const { candidate_id } = useParams();
 
+  const [bearer, setBearer] = props.bearer
+
   const navigate = useNavigate()
 
-  const handleClick = (e) => {
+
+
+  const handleClick = (e) => 
+  {
     e.preventDefault();
     
-    const endpoint = `http://localhost:8080/potcandidates/${candidate_id}`
+    const endpoint = `http://localhost:8080/soloproject2/potcandidates/${candidate_id}`
     const requestBody = {
             candidate_id:candidate_id,
-            job_id:job_id,
-            first_name:first_name,
-            last_name:last_name,
+            // job_id:job_id,
+            firstname:firstname,
+            lastname:lastname,
             mobile:mobile,
             email:email,
             city:city,
             country:country,
             trainingenddate:trainingenddate
     }
+    const requestOptions = {
+      headers:{
+          "Authorization": bearer
+      }
+    }
     // console.log(PotCandidate);
-    axios.put(endpoint, requestBody)
+    axios.put(endpoint, requestBody, requestOptions)
     .then(response=>{
       setMessage((prevMessage) => (prevMessage === "" ? "Potential Candidate Updated" : prevMessage)); // Update based on previous state
       navigate("/potcandidates");
@@ -71,22 +81,22 @@ export default function PotCandidates() {
         id="job_id"
         label="PotCand_job_id"
         variant="filled"
-        value={job_id}
+        value={jobid}
         onChange={(e) => setJob_id(e.target.value)}
       />
       <TextField
-        id="first_name"
+        id="firstname"
         label="PotCand_first_name"
         variant="filled"
-        value={first_name}
-        onChange={(e) => setFirst_name(e.target.value)}
+        value={firstname}
+        onChange={(e) => setFirstname(e.target.value)}
       />
       <TextField
-        id="last_name"
+        id="lastname"
         label="PotCand_last_name"
         variant="filled"
-        value={last_name}
-        onChange={(e) => setLast_name(e.target.value)}
+        value={lastname}
+        onChange={(e) => setLastname(e.target.value)}
       />
       <TextField
         id="mobile"

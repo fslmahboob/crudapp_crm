@@ -5,7 +5,7 @@ export default function Home(){
     <>
         <Appbar />
 
-        <h2> Welcome to the FDM Portal </h2>
+        <h2> Choose Below </h2>
     
     </>
     );

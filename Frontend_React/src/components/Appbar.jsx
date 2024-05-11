@@ -6,13 +6,16 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import { useNavigate } from "react-router-dom";
+
 
 export default function Appbar() {
+  const navigate = useNavigate();
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
+          {/* <IconButton
             size="large"
             edge="start"
             color="inherit"
@@ -20,11 +23,11 @@ export default function Appbar() {
             sx={{ mr: 2 }}
           >
             <MenuIcon />
-          </IconButton>
+          </IconButton> */}
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Job Opportunities
+            Welcome to the FDM Portal
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button color="inherit" onClick={() => navigate("/login")}>Login</Button>
         </Toolbar>
       </AppBar>
     </Box>

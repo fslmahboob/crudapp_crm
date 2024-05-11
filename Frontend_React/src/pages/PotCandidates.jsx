@@ -6,8 +6,8 @@ import Button from '@mui/material/Button';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
-export default function PotCandidates() {
-  const [job_id, setJob_id] = useState('');
+export default function PotCandidates(props) {
+  const [jobid, setJobid] = useState('');
   const [first_name, setFirst_name] = useState('');
   const [last_name, setLast_name] = useState('');
   const [mobile, setMobile] = useState('');
@@ -18,17 +18,27 @@ export default function PotCandidates() {
 
   const [message, setMessage] = useState('');
 
+  const [bearer, setBearer] = props.bearer
+
+  const requestOptions = {
+    headers:{
+        "Authorization": bearer
+        // "Origin": "http://localhost:5173"
+    }
+  };
+
   const navigate = useNavigate()
 
-  const handleClick = (e) => {
+  const handleClick = (e) => 
+  {
     e.preventDefault();
     
-    const endpoint = "http://localhost:8080/potcandidates/register"
+    const endpoint = "http://localhost:8080/soloproject2/potcandidates/register"
     const requestBody = {
             // candidate_id:candidate_id,
-            job_id:job_id,
-            first_name:first_name,
-            last_name:last_name,
+            // job:jobid,
+            firstname:first_name,
+            lastname:last_name,
             mobile:mobile,
             email:email,
             city:city,
@@ -36,9 +46,13 @@ export default function PotCandidates() {
             trainingenddate:trainingenddate
     }
     // console.log(PotCandidate);
-    axios.post(endpoint, requestBody)
+    console.log(bearer);
+
+    axios.post(endpoint, requestBody, requestOptions)
     .then(response=>{
-      setMessage((prevMessage) => (prevMessage === "" ? "New Potential Candidate Added" : prevMessage)); // Update based on previous state
+      setMessage((prevMessage) => (prevMessage === "" ? "New Potential Candidate Added" : 
+      prevMessage)); // Update based on previous state
+      // setBearer("Bearer "+response.data)
       navigate("/potcandidates");
     })
     .catch(error => console.log(error));
@@ -59,11 +73,11 @@ export default function PotCandidates() {
     >
       <h1> Add Potential Candidate </h1>
       <TextField
-        id="job_id"
+        id="jobid"
         label="PotCand_job_id"
         variant="filled"
-        value={job_id}
-        onChange={(e) => setJob_id(e.target.value)}
+        value={jobid}
+        onChange={(e) => setJobid(e.target.value)}
       />
       <TextField
         id="first_name"
