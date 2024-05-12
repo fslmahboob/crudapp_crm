@@ -26,7 +26,7 @@ public class ContactsController
 	public String add(@RequestBody Contacts contact)
 	{
 		contactsService.saveContact(contact);
-		return "New Job Added";
+		return "New Contact Added";
 	}
 	
 	@GetMapping("/getall")

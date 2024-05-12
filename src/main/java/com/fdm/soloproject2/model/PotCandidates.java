@@ -19,13 +19,13 @@ public class PotCandidates
 	
 	// Relationship
 	@ManyToOne
-	@JoinColumn(name = "job_id")
+	@JoinColumn(name = "jobid")
 	private Jobs job;
 	
-	@Column(name = "first_name", nullable = false)
+	@Column(name = "firstname", nullable = false)
 	private String firstname;
 	
-	@Column(name = "last_name", nullable = false)
+	@Column(name = "lastname", nullable = false)
 	private String lastname;
 	
 	@Column(name = "email", nullable = false, unique = true)

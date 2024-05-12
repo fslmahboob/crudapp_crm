@@ -72,7 +72,7 @@ public class SecurityConfig {
         	.authorizeHttpRequests(authz -> authz
         			.requestMatchers("/adminonly").hasAuthority("SCOPE_ADMIN")
         			.requestMatchers("/auth/login").permitAll()
-        			.requestMatchers("/user/register").permitAll()       			
+        			.requestMatchers("/users/register").permitAll()       			
         			.anyRequest().authenticated()	// Default is to log in (authenticated). Can change to permitAll to let anyone have access
         	)
 //        	.oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)  //The old syntax

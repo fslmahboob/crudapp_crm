@@ -18,19 +18,19 @@ public class Contacts
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int contact_id;
 	
-	@Column(name = "company_name", nullable = false)
-	private String company_name;
+	@Column(name = "companyname", unique = true)
+	private String companyname;
 	
-	@Column(name = "first_name", nullable = false)
-	private String first_name;
+	@Column(name = "firstname", unique = true)
+	private String firstname;
 	
-	@Column(name = "last_name", nullable = false)
-	private String last_name;
+	@Column(name = "lastname", unique = true)
+	private String lastname;
 	
-	@Column(name = "email", nullable = false, unique = true)
+	@Column(name = "email", unique = true)
 	private String email;
 	
-	@Column(name = "mobile", nullable = false, unique = true)
+	@Column(name = "mobile", unique = true)
 	private String Mobile;
 	
 	// Relationship
@@ -47,34 +47,34 @@ public class Contacts
 		this.contact_id = contact_id;
 	}
 
-	public String getCompany_name()
+	public String getCompanyname()
 	{
-		return company_name;
+		return companyname;
 	}
 
-	public void setCompany_name(String company_name)
+	public void setCompany_name(String companyname)
 	{
-		this.company_name = company_name;
+		this.companyname = companyname;
 	}
 
-	public String getFirst_name()
+	public String getFirstname()
 	{
-		return first_name;
+		return firstname;
 	}
 
-	public void setFirst_name(String first_name)
+	public void setFirst_name(String firstname)
 	{
-		this.first_name = first_name;
+		this.firstname = firstname;
 	}
 
-	public String getLast_name()
+	public String getLastname()
 	{
-		return last_name;
+		return lastname;
 	}
 
-	public void setLast_name(String last_name)
+	public void setLast_name(String lastname)
 	{
-		this.last_name = last_name;
+		this.lastname = lastname;
 	}
 
 	public String getEmail()
@@ -107,23 +107,28 @@ public class Contacts
 		this.lead = lead;
 	}
 
-	public Contacts(String company_name, String first_name, String last_name, String email, String mobile,
+	public Contacts(String companyname, String firstname, String lastname, String email, String mobile,
 	        List<Leads> lead)
 	{
 		super();
-		this.company_name = company_name;
-		this.first_name = first_name;
-		this.last_name = last_name;
+		this.companyname = companyname;
+		this.firstname = firstname;
+		this.lastname = lastname;
 		this.email = email;
 		Mobile = mobile;
 		this.lead = lead;
+	}
+	
+	public Contacts()
+	{
+		
 	}
 
 	@Override
 	public String toString()
 	{
-		return "Contacts [contact_id=" + contact_id + ", company_name=" + company_name + ", first_name=" + first_name
-		        + ", last_name=" + last_name + ", email=" + email + ", Mobile=" + Mobile + ", lead=" + lead + "]";
+		return "Contacts [contact_id=" + contact_id + ", companyname=" + companyname + ", firstname=" + firstname
+		        + ", lastname=" + lastname + ", email=" + email + ", Mobile=" + Mobile + ", lead=" + lead + "]";
 	}
 	
 	

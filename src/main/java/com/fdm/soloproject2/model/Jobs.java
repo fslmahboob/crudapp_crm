@@ -33,7 +33,7 @@ public class Jobs
 	private List<PotCandidates> potcandidates;
 	
 	@ManyToOne
-	@JoinColumn(name = "lead_id")
+	@JoinColumn(name = "leadid")
 	private Leads lead;
 	
 	// No args constructor
